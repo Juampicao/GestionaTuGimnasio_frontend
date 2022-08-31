@@ -81,7 +81,7 @@ const GeneralProvider = ({ children }) => {
       );
       setSuscriptor(respuesta.data);
       setPagosSuscriptorId(respuesta.data.pagos);
-      console.log(respuesta.data.rutina);
+      console.log(respuesta.data);
     } catch (error) {
       console.log(error);
     }
@@ -266,14 +266,15 @@ const GeneralProvider = ({ children }) => {
         `${import.meta.env.VITE_API_URL}/usuarios/tipossuscripcion`,
         config
       );
+      // setTiposSuscripcion(data.tiposSuscripcion);
       setTiposSuscripcion(data.tiposSuscripcion);
-      console.log(data);
+      console.log(data.tiposSuscripcion);
     } catch (error) {
       console.log(error);
     }
     // setIsCargando(false);
   }
-
+  // getTiposSuscripcion();
   async function PostTiposSuscripcion(objeto) {
     try {
       const { data } = await axios.post(
@@ -284,6 +285,7 @@ const GeneralProvider = ({ children }) => {
         config
       );
       console.log(data);
+      navigate("/suscriptores");
       setIsOpenSaveModal(true);
     } catch (error) {
       console.log(error);
@@ -308,16 +310,20 @@ const GeneralProvider = ({ children }) => {
     }
   }
 
-  async function DeleteTiposSuscripcion(nombre, uid, nuevaSuscripcion) {
+  async function DeleteTiposSuscripcion(
+    nombre,
+    suscripcionAEliminarId,
+    nuevaSuscripcionId
+  ) {
     let confirmar = confirm(
-      `Vas a eliminar la suscripcion\nuid:${uid} nombre: ${nombre}\n\nreemplazada por: "${nuevaSuscripcion}"`
+      `Vas a eliminar la suscripcion\nid:${suscripcionAEliminarId} nombre: ${nombre}\n\nreemplazada por: "${nuevaSuscripcionId}"`
     );
     if (confirmar) {
       try {
         const { data } = await axios.delete(
           `${
             import.meta.env.VITE_API_URL
-          }/usuarios/tipossuscripcion/?uid=${uid}&nuevasuscripcion=${nuevaSuscripcion}`,
+          }/usuarios/tipossuscripcion/?suscripcionAEliminarId=${suscripcionAEliminarId}&nuevaSuscripcionId=${nuevaSuscripcionId}`,
           config
         );
         console.log(data);

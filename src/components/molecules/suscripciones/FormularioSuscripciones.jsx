@@ -23,7 +23,7 @@ const FormularioSuscripciones = () => {
 
   const [nombre, setNombre] = useState("");
   const [valor, setValor] = useState("");
-  const [uid, setUid] = useState("");
+  const [id, setId] = useState("");
 
   const [error, setError] = useState(false);
   const [isCargando, setIsCargando] = useState(true);
@@ -32,13 +32,13 @@ const FormularioSuscripciones = () => {
   const objeto = {
     nombre,
     valor,
-    uid,
+    id,
   };
 
   const resetForm = async () => {
     setNombre("");
     setValor("");
-    setUid("");
+    id("");
   };
 
   const validarFormulario = [nombre, valor].includes("");
@@ -48,16 +48,16 @@ const FormularioSuscripciones = () => {
   }, [seleccionarSuscripcion]);
 
   async function rellenarCampos() {
-    if (seleccionarSuscripcion.uid) {
+    if (seleccionarSuscripcion.id) {
       setNombre(seleccionarSuscripcion.nombre);
       setValor(seleccionarSuscripcion.valor);
-      setUid(seleccionarSuscripcion.uid);
+      setId(seleccionarSuscripcion.id);
       console.log(seleccionarSuscripcion);
       return setIsCargando(false);
     }
     setNombre("");
     setValor("");
-    setUid("");
+    setId("");
     setIsCargando(false);
   }
   // const useField = ({ type = "text" }) => {
@@ -85,10 +85,10 @@ const FormularioSuscripciones = () => {
       }, 3000);
       return;
     }
-    if (seleccionarSuscripcion.uid) {
+    if (seleccionarSuscripcion.id) {
       console.log(objeto);
       EditTiposSuscripcion(objeto);
-      setUid("");
+      setId("");
     } else {
       const a = await PostTiposSuscripcion(objeto);
       const b = await resetForm();
@@ -108,7 +108,7 @@ const FormularioSuscripciones = () => {
             <form action="submit" className="flex-row space-y-5">
               <h2 className="text-center font-bold mb-3">
                 {seleccionarSuscripcion.nombre
-                  ? seleccionarSuscripcion.nombre
+                  ? `${seleccionarSuscripcion.nombre}`
                   : "Nueva Suscripcion"}
               </h2>
               <div className={divStyles}>
@@ -135,7 +135,7 @@ const FormularioSuscripciones = () => {
             <BotonPrimario
               Color={BotonBlancoRedondeado}
               value={
-                seleccionarSuscripcion.uid
+                seleccionarSuscripcion.id
                   ? "Editar Suscripcion"
                   : "Crear Suscripcion"
               }

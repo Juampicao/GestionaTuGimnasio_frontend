@@ -7,7 +7,7 @@ const PieCantidadPorTipoSuscripcion = () => {
   const { getEstadisticasGenerales, dataSuscriptores } = useEstadisticas();
 
   const [isCargando, setIsCargando] = useState(true);
-  const { obtenerCantidadCuotasPorTipoSuscripcion: array } = dataSuscriptores;
+  const { obtenerCantidadActivosTipoSuscripcion: array } = dataSuscriptores;
 
   let nuevoLabels = [];
   let nuevaData = [];

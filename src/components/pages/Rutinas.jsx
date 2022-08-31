@@ -1,10 +1,12 @@
 import React from "react";
-
+import ContenedorLayout from "../molecules/ContenedorLayout";
 const Rutinas = () => {
   return (
     <div>
-      Ejercicios
-      <h1> Pagina en construccion.. </h1>
+      <ContenedorLayout>
+        Ejercicios
+        <h1> Pagina en construccion.. </h1>
+      </ContenedorLayout>
     </div>
   );
 };

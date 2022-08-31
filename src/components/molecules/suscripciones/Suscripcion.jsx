@@ -24,10 +24,11 @@ const Suscripcion = ({ suscripcion, tiposSuscripcion }) => {
   }, []);
 
   async function abrirModal(suscripcion) {
+    console.log(suscripcion);
     setSeleccionarSuscripcion({
       nombre: suscripcion.nombre,
       valor: suscripcion.valor,
-      uid: suscripcion.uid,
+      id: suscripcion._id,
     });
     await openModal();
   }
@@ -36,7 +37,7 @@ const Suscripcion = ({ suscripcion, tiposSuscripcion }) => {
     setSeleccionarSuscripcion({
       nombre: "",
       valor: "",
-      uid: "",
+      id: "",
     });
   };
 
@@ -45,7 +46,7 @@ const Suscripcion = ({ suscripcion, tiposSuscripcion }) => {
     setSeleccionarSuscripcion({
       nombre: suscripcion.nombre,
       valor: suscripcion.valor,
-      uid: suscripcion.uid,
+      id: suscripcion._id,
     });
     let confirmar = confirm(
       `¿Seguro deseas eliminar esta suscripcion: ${suscripcion.nombre}?\n\nHay Suscriptores que estan vinculados a esta suscripcion.\n\nDeberá elegir por cual la reemplaza en todos los casos donde exista "${suscripcion.nombre}" a continuacion`
@@ -77,7 +78,7 @@ const Suscripcion = ({ suscripcion, tiposSuscripcion }) => {
 
   // const returnModal = async (suscripcion) => {
   //   await setNuevaSuscripcion({
-  //     nombre: suscripcion.nombre,
+  //     nombre: suscripcion.seleccionarSuscripcion,
   //     valor: suscripcion.valor,
   //     uid: suscripcion.uid,
   //     // nombre: "",

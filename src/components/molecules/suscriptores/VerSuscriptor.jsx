@@ -188,7 +188,7 @@ const VerSuscriptor = () => {
               </li>
               <li className={liStyles}>
                 <p className={propiedadTituloStyles}> Tipo:</p>
-                {suscriptor.tipoSuscripcion}
+                {suscriptor.tipoSuscripcion.nombre}
               </li>
             </div>
             <h3 className={titleStlyes}>Pago Suscripciones</h3>

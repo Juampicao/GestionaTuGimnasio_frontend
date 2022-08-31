@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../atoms/Header";
+import ContenedorLayout from "../molecules/ContenedorLayout";
 import ListadoPagosSuscripciones from "../molecules/pagos/ListadoPagosSuscripciones";
 
 const Pagos = () => {
@@ -7,8 +8,9 @@ const Pagos = () => {
   return (
     <div>
       <Header title="Pagos" />
-
-      <ListadoPagosSuscripciones />
+      <ContenedorLayout>
+        <ListadoPagosSuscripciones />
+      </ContenedorLayout>
     </div>
   );
 };

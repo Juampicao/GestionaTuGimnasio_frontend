@@ -90,7 +90,7 @@ const FormularioSuscriptor = () => {
       setGenero(suscriptor.informacionPersonal.genero);
       setCorreo(suscriptor.informacionPersonal.correo);
       setCelular(suscriptor.informacionPersonal.celular);
-      setTipoSuscripcion(suscriptor.tipoSuscripcion);
+      setTipoSuscripcion(suscriptor.tipoSuscripcion._id);
       setFechaNacimiento(fechaNacimientoEditado);
       setNotas(suscriptor.informacionPersonal.notas);
       setFechaVencimientoSuscripcion(fechaVencimientoEditado);
@@ -349,11 +349,13 @@ const FormularioSuscriptor = () => {
                   value={tipoSuscripcion}
                   onChange={(e) => setTipoSuscripcion(e.target.value)}
                 >
-                  {tiposSuscripcion.map((suscripcion) => (
-                    <option value={suscripcion.nombre}>
-                      {suscripcion.nombre}
-                    </option>
-                  ))}
+                  {tiposSuscripcion
+                    ? tiposSuscripcion.map((suscripcion) => (
+                        <option value={suscripcion._id} key={suscripcion._id}>
+                          {suscripcion.nombre}
+                        </option>
+                      ))
+                    : ""}
                 </select>
               </div>
               {suscriptor._id ? (

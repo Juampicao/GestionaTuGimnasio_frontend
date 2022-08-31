@@ -60,7 +60,7 @@ const FormularioPostDeleteSuscripcion = ({ inputs, suscripcion }) => {
                       onChange={(e) => setValue(e.target.value)}
                     >
                       {e.array.map((e) => {
-                        return <option>{e.nombre}</option>;
+                        return <option value={e._id}>{e.nombre}</option>;
                       })}
                     </select>
                   </div>
@@ -130,7 +130,7 @@ const FormularioPostDeleteSuscripcion = ({ inputs, suscripcion }) => {
         <div className={botonDivStyles}>
           <BotonPrimario
             onClick={() =>
-              DeleteTiposSuscripcion(suscripcion.nombre, suscripcion.uid, value)
+              DeleteTiposSuscripcion(suscripcion.nombre, suscripcion.id, value)
             }
             Color={BotonBlancoRedondeado}
             value={`Eliminar ${suscripcion.nombre} y guardar los cambios`}

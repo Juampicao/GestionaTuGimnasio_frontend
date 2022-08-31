@@ -63,23 +63,16 @@ const NuevoFormularioPagoSuscripcion = () => {
   const obtenerSuscriptorPorNombre = (e) => {
     const iterarSuscriptores = () => {
       for (let i = 0; i < suscriptores.length; i++) {
-        // console.log(suscriptores[i].nombre);
         if (suscriptores[i].nombre === e) {
+          console.log(suscriptores[i]);
           setSuscriptorPagador(suscriptores[i]);
           setSocio(suscriptores[i].socio);
-          setTipoSuscripcion(suscriptores[i].tipoSuscripcion);
+          setTipoSuscripcion(suscriptores[i].tipoSuscripcion.nombre);
           setFechaVencimientoSuscripcion(
             suscriptores[i].fechas.fechaVencimientoSuscripcion
           );
+          setMontoPagoSuscripcion(suscriptores[i].tipoSuscripcion.valor);
         }
-      }
-      for (let i = 0; i <= tipoSuscripcion.length; i++) {
-        if ((tiposSuscripcion[i].nombre = suscriptorPagador.tipoSuscripcion)) {
-          console.log(suscriptorPagador.tipoSuscripcion);
-          console.log(tiposSuscripcion[i].valor);
-          setMontoPagoSuscripcion(tiposSuscripcion[i].valor);
-        }
-        console.log(suscriptorPagador);
       }
     };
     iterarSuscriptores();
@@ -198,6 +191,7 @@ const NuevoFormularioPagoSuscripcion = () => {
                   Vencimiento
                 </label>
                 <input
+                  disabled={true}
                   id="montoSuscripcion"
                   name="montoSuscripcion"
                   type="text"
@@ -219,7 +213,7 @@ const NuevoFormularioPagoSuscripcion = () => {
                   name="montoSuscripcion"
                   type="number"
                   placeholder="Monto a pagar"
-                  className={inputStyles}
+                  className={`${inputStyles} text-slate-900`}
                   value={montoPagoSuscripcion}
                   onChange={(e) => setMontoPagoSuscripcion(e.target.value)}
                   autoComplete="off"

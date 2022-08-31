@@ -3,10 +3,13 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import BotonFlotante from "../atoms/BotonFlotante";
 
 import iconoVentas from "../../img/iconoVentas.png";
-import iconoBebida from "../../img/iconoBebida.png";
+import iconoCash from "../../img/iconCash.png";
 import iconoConfiguracion from "../../img/iconoConfiguracion.png";
 import IconoCerrarBlanco from "../../img/iconoCerrarBlanco.png";
+
 import IconoBills from "../../img/iconoBills.png";
+import IconoGym from "../../img/iconoGym.png";
+
 import IconoLogout from "../../img/iconoLogout.png";
 import IconDashboard from "../../img/iconDashboard.png";
 import iconWoman from "../../img/iconWoman.png";
@@ -19,6 +22,7 @@ const Layout = () => {
 
   const { auth, setAuth, cerrarSesionAuth } = useAuth();
 
+  console.log(auth);
   const location = useLocation();
   const urlActual = location.pathname;
 
@@ -100,16 +104,16 @@ const Layout = () => {
           <li>
             <BotonFlotante />
           </li>
-          <Link to="/gastos">
+          <Link to="/rutinas">
             <li className={liStyles}>
-              <img src={IconoBills} className={imgStyles} alt="" />
-              <p className="">Gastos</p>
+              <img src={IconoGym} className={imgStyles} alt="" />
+              <p className="">Rutina</p>
             </li>
           </Link>
-          <Link to="/inventario">
+          <Link to="/pagos">
             <li className={liStyles}>
-              <img src={iconoVentas} className={imgStyles} alt="" />
-              <p className="">Stock</p>
+              <img src={iconoCash} className={imgStyles} alt="" />
+              <p className="">Pagos</p>
             </li>
           </Link>
         </ul>
@@ -142,7 +146,7 @@ const Layout = () => {
                   !isActiveMenu && `scale-0`
                 }`}
               >
-                Gimnasio
+                {auth ? `Gimnasio ${auth.nombre}` : Gimnasio}
               </h2>
             </div>
           </Link>
@@ -166,7 +170,7 @@ const Layout = () => {
               to="/pagos"
             >
               <div className="flex items-center space-x-4 text-base xs:text-lg">
-                <img src={iconoBebida} className="h-6 sm:h-8 " alt="" />
+                <img src={iconoCash} className="h-6 sm:h-8 " alt="" />
                 <p className={hiddenTitles}>Pagos</p>
               </div>
             </Link>
@@ -202,7 +206,7 @@ const Layout = () => {
                 to="/rutinas"
               >
                 <div className="flex items-center space-x-4 text-base xs:text-lg">
-                  <img src={IconoBills} className="h-6 sm:h-8 " alt="" />
+                  <img src={IconoGym} className="h-6 sm:h-8 " alt="" />
                   <p className={hiddenTitles}>Rutinas</p>
                 </div>
               </Link>
@@ -250,19 +254,12 @@ const Layout = () => {
               </Link>
             </div>
 
-            {/* <div className="float-end bottom-0 fixed mb-10 flex">
+            <div className="float-end bottom-0 fixed mb-10 flex">
               <Link to="/" className="text-white">
+                {/* // onClick={cerrarSesionAuth} */}
                 <p className={hiddenTitles}>Cerrar Sesion</p>
               </Link>
-            </div> */}
-
-            <button
-              onClick={cerrarSesionAuth}
-              className="hover:scale-105  hover:duration-200 duration-200 text-white"
-            >
-              {" "}
-              Cerrar Sesion
-            </button>
+            </div>
           </nav>
         </div>
         {/* Fina Computador Layout */}

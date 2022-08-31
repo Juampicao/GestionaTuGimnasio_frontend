@@ -67,8 +67,10 @@ const EstadisticasProvider = ({ children }) => {
         `${import.meta.env.VITE_API_URL}/usuarios/tipossuscripcion`,
         config
       );
-      console.log(data.tiposSuscripcion);
-      setTiposSuscripcion(data.tiposSuscripcion);
+      // setTiposSuscripcion(data.tiposSuscripcion);
+      // console.log(data.tiposSuscripcion);
+      setTiposSuscripcion(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
